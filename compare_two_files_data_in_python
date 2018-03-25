@@ -1,0 +1,36 @@
+import pprint
+
+def data_collection(file_name):
+    file_one = open(file_name)
+ 
+    temp_collection = set()
+    for each_row in file_one:
+        #print(each_row ,end = "")
+        each_row = each_row.replace('\n','')
+        temp_collection.add(each_row)
+    return temp_collection
+
+#first_data_collection = set()
+#second_data_collection = set()
+
+first_data_collection = set(data_collection("file_one.txt"))
+second_data_collection = set(data_collection("file_two.txt"))
+
+pprint.pprint(first_data_collection)
+pprint.pprint(second_data_collection)
+
+
+not_in_second = [a for a in first_data_collection if a not in second_data_collection]
+not_in_first = [a for a in second_data_collection if a not in first_data_collection]
+
+
+
+#filtered_data = set(second_data_collection) & set(first_data_collection)
+
+
+#filtered_data = [a for (a,b) in itertools.product(first_data_collection,second_data_collection) if a != b]
+
+#filtered_data = filter(lambda x,y:x != y, itertools.product(first_data_collection,second_data_collection))
+pprint.pprint(not_in_second)
+pprint.pprint(not_in_first)
+
